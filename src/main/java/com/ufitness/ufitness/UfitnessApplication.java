@@ -1,0 +1,13 @@
+package com.ufitness.ufitness;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class UfitnessApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(UfitnessApplication.class, args);
+	}
+
+}
