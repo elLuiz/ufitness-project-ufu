@@ -3,8 +3,10 @@ package com.ufitness.ufitness.service.client;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.client.ClientRepository;
+import com.ufitness.ufitness.repository.user.UserEntity;
 import com.ufitness.ufitness.service.dto.ClientDTOService;
 import com.ufitness.ufitness.service.dto.ClientRegistryDTOService;
+import com.ufitness.ufitness.service.dto.UserDTOService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,19 +29,20 @@ class ClientServiceTest {
     private ClientDTOService clientDTOService;
     @Mock
     private BCryptPasswordEncoder passwordEncoder;
+    @Mock
+    private UserDTOService userDTOService;
     private ClientEntity clientEntity;
     private ClientRegistryDTO clientRegistryDTO;
     private ClientDTO clientDTO;
 
     @BeforeEach
     public void init() {
-        clientEntity = generateClientEntity();
+        clientEntity = new ClientEntity();
         clientRegistryDTO = generateClientRegistryDTO();
         clientDTO = generateClientDTO();
         clientService = new ClientService(clientRepository, clientRegistryDTOService, clientDTOService);
         clientService.setPasswordEncoder(passwordEncoder);
-        Mockito.when(passwordEncoder.encode("12333"))
-                .thenReturn("$2a.12.jsdkj3sdsooi2uy");
+        clientRegistryDTOService.setUserDTOService(userDTOService);
     }
 
     @Test
@@ -53,17 +56,6 @@ class ClientServiceTest {
                 .when(clientDTOService)
                 .convertToDTO(clientEntity);
         assertThat("My Name").isEqualTo( clientService.saveClient(clientRegistryDTO).getName());
-    }
-
-
-    private ClientEntity generateClientEntity() {
-        ClientEntity clientEntity = new ClientEntity();
-        clientEntity.setName("My Name");
-        clientEntity.setEmail("myemail@gmail.com");
-        clientEntity.setEnabled(false);
-        clientEntity.setPassword("12333");
-
-        return clientEntity;
     }
 
     private ClientRegistryDTO generateClientRegistryDTO() {

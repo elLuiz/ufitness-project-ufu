@@ -1,5 +1,6 @@
 package com.ufitness.ufitness.repository.client;
 
+import com.ufitness.ufitness.repository.user.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +19,7 @@ public class ClientEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-    @Column
-    private String name;
-    @Column(unique = true)
-    private String email;
-    @Column
-    private String password;
-    @Column(columnDefinition = "bool default false")
-    private boolean enabled;
+    @OneToOne(mappedBy = "clientEntity", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserEntity userEntity;
 }

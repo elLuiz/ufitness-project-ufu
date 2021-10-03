@@ -1,6 +1,8 @@
 package com.ufitness.ufitness.service.dto;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
+import com.ufitness.ufitness.repository.user.UserEntity;
+import com.ufitness.ufitness.repository.user.UserTypeEnum;
 import com.ufitness.ufitness.service.client.ClientDTO;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +25,7 @@ class ClientDTOServiceTest {
     void init() {
         clientDTOService = new ClientDTOService(modelMapper);
         clientDTO = generateClientDTO();
-        clientEntity = generateClientEntity();
+        clientEntity = new ClientEntity();
     }
 
     @Test
@@ -38,17 +40,6 @@ class ClientDTOServiceTest {
         Mockito.when(clientDTOService.convertToEntity(clientDTO))
                 .thenReturn(clientEntity);
         AssertionsForClassTypes.assertThat(clientEntity).isEqualTo(clientDTOService.convertToEntity(clientDTO));
-    }
-
-    private ClientEntity generateClientEntity() {
-        ClientEntity clientEntity = new ClientEntity();
-        clientEntity.setId(40L);
-        clientEntity.setName("My Name");
-        clientEntity.setEmail("myemail@gmail.com");
-        clientEntity.setEnabled(false);
-        clientEntity.setPassword("12333");
-
-        return clientEntity;
     }
 
     private ClientDTO generateClientDTO() {

@@ -26,9 +26,14 @@ public class ClientService {
     @Transactional
     public ClientDTO saveClient(ClientRegistryDTO clientRegistryDTO) {
         ClientEntity clientEntity = clientRegistryDTOService.convertToEntity(clientRegistryDTO);
-        clientEntity.setPassword(passwordEncoder.encode(clientEntity.getPassword()));
+        hashPassword(clientEntity);
         ClientEntity savedClient = clientRepository.save(clientEntity);
         return clientDTOService.convertToDTO(savedClient);
+    }
+
+    private void hashPassword(ClientEntity clientEntity) {
+        if (clientEntity.getUserEntity() != null)
+            clientEntity.getUserEntity().setPassword(passwordEncoder.encode(clientEntity.getUserEntity().getPassword()));
     }
 
     @Autowired
