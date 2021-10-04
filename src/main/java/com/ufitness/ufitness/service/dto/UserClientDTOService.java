@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDTOService extends DTOService<ClientRegistryDTO, UserEntity> {
+public class UserClientDTOService extends DTOService<ClientRegistryDTO, UserEntity> {
     @Autowired
-    public UserDTOService(ModelMapper modelMapper) {
+    public UserClientDTOService(ModelMapper modelMapper) {
         super(modelMapper);
     }
 

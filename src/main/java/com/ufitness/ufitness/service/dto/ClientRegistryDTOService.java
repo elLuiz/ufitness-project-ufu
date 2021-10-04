@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClientRegistryDTOService extends DTOService<ClientRegistryDTO, ClientEntity> {
-    private UserDTOService userDTOService;
+    private UserClientDTOService userClientDTOService;
     @Autowired
     public ClientRegistryDTOService(ModelMapper modelMapper) {
         super(modelMapper);
@@ -17,7 +17,7 @@ public class ClientRegistryDTOService extends DTOService<ClientRegistryDTO, Clie
 
     @Override
     public ClientEntity convertToEntity(ClientRegistryDTO clientRegistryDTO) {
-        UserEntity userEntity = userDTOService.convertToEntity(clientRegistryDTO);
+        UserEntity userEntity = userClientDTOService.convertToEntity(clientRegistryDTO);
         ClientEntity clientEntity = new ClientEntity();
         userEntity.insertClientDetails(clientEntity);
         clientEntity.setUserEntity(userEntity);
@@ -30,7 +30,7 @@ public class ClientRegistryDTOService extends DTOService<ClientRegistryDTO, Clie
     }
 
     @Autowired
-    public void setUserDTOService(UserDTOService userDTOService) {
-        this.userDTOService = userDTOService;
+    public void setUserDTOService(UserClientDTOService userClientDTOService) {
+        this.userClientDTOService = userClientDTOService;
     }
 }

@@ -3,10 +3,9 @@ package com.ufitness.ufitness.service.client;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.client.ClientRepository;
-import com.ufitness.ufitness.repository.user.UserEntity;
 import com.ufitness.ufitness.service.dto.ClientDTOService;
 import com.ufitness.ufitness.service.dto.ClientRegistryDTOService;
-import com.ufitness.ufitness.service.dto.UserDTOService;
+import com.ufitness.ufitness.service.dto.UserClientDTOService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,7 +29,7 @@ class ClientServiceTest {
     @Mock
     private BCryptPasswordEncoder passwordEncoder;
     @Mock
-    private UserDTOService userDTOService;
+    private UserClientDTOService userClientDTOService;
     private ClientEntity clientEntity;
     private ClientRegistryDTO clientRegistryDTO;
     private ClientDTO clientDTO;
@@ -42,7 +41,7 @@ class ClientServiceTest {
         clientDTO = generateClientDTO();
         clientService = new ClientService(clientRepository, clientRegistryDTOService, clientDTOService);
         clientService.setPasswordEncoder(passwordEncoder);
-        clientRegistryDTOService.setUserDTOService(userDTOService);
+        clientRegistryDTOService.setUserDTOService(userClientDTOService);
     }
 
     @Test

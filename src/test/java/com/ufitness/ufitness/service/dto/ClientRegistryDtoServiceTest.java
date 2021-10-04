@@ -18,21 +18,21 @@ class ClientRegistryDtoServiceTest {
     @Mock
     private ModelMapper modelMapper;
     @Mock
-    private UserDTOService userDTOService;
+    private UserClientDTOService userClientDTOService;
     private ClientRegistryDTO clientRegistryDTO;
     private ClientEntity clientEntity;
 
     @BeforeEach
     void init() {
         clientRegistryDTOService = new ClientRegistryDTOService(modelMapper);
-        clientRegistryDTOService.setUserDTOService(userDTOService);
+        clientRegistryDTOService.setUserDTOService(userClientDTOService);
         clientRegistryDTO = generateClientRegistryDTO();
         clientEntity = new ClientEntity();
     }
 
     @Test
     void shouldConvertDTOToEntity() {
-        Mockito.when(userDTOService.convertToEntity(clientRegistryDTO))
+        Mockito.when(userClientDTOService.convertToEntity(clientRegistryDTO))
                 .thenReturn(generateUserEntity());
         AssertionsForClassTypes.assertThat(clientRegistryDTOService.convertToEntity(clientRegistryDTO)).isNotNull();
     }
