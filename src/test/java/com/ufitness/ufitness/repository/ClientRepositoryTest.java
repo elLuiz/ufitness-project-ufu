@@ -2,6 +2,7 @@ package com.ufitness.ufitness.repository;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.client.ClientRepository;
+import com.ufitness.ufitness.repository.user.UserEntity;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -20,10 +21,12 @@ class ClientRepositoryTest {
 
     @Test
     void shouldSaveClientWithUniqueId() {
+        UserEntity userEntity = new UserEntity();
         ClientEntity clientEntity = new ClientEntity();
-        clientEntity.setName("Unique name");
-        clientEntity.setPassword("123487874");
-        clientEntity.setEmail("unique@gmail.com");
-        AssertionsForClassTypes.assertThat(1L).isEqualTo(clientRepository.save(clientEntity).getId());
+        userEntity.setName("Test spring");
+        userEntity.setEmail("test@spring.boot");
+        userEntity.setPassword("1232432");
+        userEntity.setClientEntity(clientEntity);
+        AssertionsForClassTypes.assertThat(clientRepository.save(clientEntity).getId()).isEqualTo(1L);
     }
 }
