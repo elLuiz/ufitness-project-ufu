@@ -46,14 +46,14 @@ class MailControllerTest {
 
     @Test
     void shouldValidateToken() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.patch("/api/v1/ufitness/mail?token=" + token)
+        mockMvc.perform(MockMvcRequestBuilders.patch("/api/v1/ufitness/mail/confirm?token=" + token)
                     .contentType(MediaType.APPLICATION_JSON));
         AssertionsForClassTypes.assertThat(mailRepository.findMailEntityByToken(token).get().getEmailStatus()).isEqualTo(EmailStatus.ANSWERED);
     }
 
     @Test
-    void shouldNotValidateTokenWhenItIsNull() throws Exception {
-        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.patch("/api/v1/ufitness/mail?token=" + "abcadkejkj")
+    void shouldNotValidateTokenWhenItIsNotPresent() throws Exception {
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.patch("/api/v1/ufitness/mail/confirm?token=" + "abcadkejkj")
                 .contentType(MediaType.APPLICATION_JSON));
         resultActions.andExpect(MockMvcResultMatchers.status().isBadRequest());
     }

@@ -1,5 +1,6 @@
 package com.ufitness.ufitness.controller.login;
 
+import com.ufitness.ufitness.exception.LoginException;
 import com.ufitness.ufitness.exception.UserNotFoundException;
 import com.ufitness.ufitness.service.user.LoginDTO;
 import com.ufitness.ufitness.service.user.UserService;
@@ -31,6 +32,8 @@ public class LoginController {
             return ResponseEntity.ok(Collections.singletonMap("result", "success"));
         } catch (UserNotFoundException userNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", userNotFoundException.getMessage()));
+        } catch (LoginException loginException) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", loginException.getMessage()));
         }
     }
 }

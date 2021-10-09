@@ -23,7 +23,7 @@ public class MailController {
         this.mailService = mailService;
     }
 
-    @PatchMapping
+    @PatchMapping("/confirm")
     public ResponseEntity<Map<String, String>> validateMailToken(@RequestParam("token") String token) {
         try {
             mailService.validateMailToken(token);

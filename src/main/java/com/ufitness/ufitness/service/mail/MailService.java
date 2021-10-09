@@ -35,7 +35,7 @@ public class MailService {
     public void sendConfirmationEmail(UserEntity userEntity) throws EmailNotSendException {
         MailEntity emailEntity = createEmailEntity(userEntity);
         String message = "Seja bem-vindo ao UFitness, " + userEntity.getName() + ".\n " +
-                "Para confirmar seu cadastro, por favor clique no link: http://localhost:8080/api/v1/mail/confirm?token=" + emailEntity.getToken().toString();
+                "Para confirmar seu cadastro, por favor clique no link: http://localhost:8080/api/v1/ufitness/mail/confirm?token=" + emailEntity.getToken().toString();
         emailEntity.setMessage(message);
         sendSimpleEmail(userEntity, emailEntity, message);
     }
