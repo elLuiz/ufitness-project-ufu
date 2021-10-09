@@ -6,7 +6,8 @@ import com.ufitness.ufitness.repository.user.UserEntity;
 import com.ufitness.ufitness.repository.user.UserRepository;
 import com.ufitness.ufitness.repository.user.UserTypeEnum;
 import com.ufitness.ufitness.service.user.LoginDTO;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,11 +26,6 @@ class LoginControllerTest {
     private ObjectMapper objectMapper;
     @Autowired
     private UserRepository userRepository;
-
-    @AfterEach
-    void tearDown() {
-        userRepository.deleteAll();
-    }
 
     @Test
     void shouldLogin() throws Exception {
@@ -56,6 +52,7 @@ class LoginControllerTest {
         userEntity.setEmail(email);
         userEntity.setPassword("$2a$12$86WGlji3dJOPek8PKd3EpeajuPAL4Zfg7BDsXO0EuHM7YMrjOc5ES");
         userEntity.setUserTypeEnum(UserTypeEnum.CLIENT);
+        userEntity.setEnabled(true);
         userEntity.setClientEntity(new ClientEntity(null, userEntity));
         userRepository.save(userEntity);
     }

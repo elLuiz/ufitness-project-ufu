@@ -1,5 +1,6 @@
 package com.ufitness.ufitness.service.user;
 
+import com.ufitness.ufitness.exception.LoginException;
 import com.ufitness.ufitness.exception.UserNotFoundException;
 import com.ufitness.ufitness.repository.user.UserEntity;
 import com.ufitness.ufitness.repository.user.UserRepository;
@@ -31,6 +32,7 @@ class UserServiceTest {
         userServiceSpy = Mockito.spy(userService);
         userEntity = new UserEntity();
         userEntity.setId(10L);
+        userEntity.setEnabled(true);
         userEntity.setPassword("$2$12789834784372389");
     }
 
@@ -55,6 +57,20 @@ class UserServiceTest {
             userServiceSpy.loginUser(invalidLogin);
         } catch (UserNotFoundException userNotFoundException) {
             AssertionsForClassTypes.assertThat("USER_NOT_FOUND").isEqualTo(userNotFoundException.getMessage());
+        }
+    }
+
+    @Test
+    void shouldThrowLoginExceptionWhenUserIsNotEnabled() {
+        userEntity.setEnabled(false);
+        Mockito.doReturn(Optional.of(userEntity))
+                .when(userRepository).loginUser(loginDTO.getEmail());
+        Mockito.when(passwordEncoder.matches(loginDTO.getPassword(), userEntity.getPassword()))
+                .thenReturn(true);
+        try {
+            userServiceSpy.loginUser(loginDTO);
+        } catch (LoginException loginException) {
+            AssertionsForClassTypes.assertThat(loginException.getMessage()).isEqualTo("USER_NOT_ENABLED");
         }
     }
 }

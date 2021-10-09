@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Optional;
 
 // reference: https://github.com/amigoscode/spring-boot-fullstack-professional/blob/13-testing/src/test/java/com/example/demo/integration/StudentIT.java
 @SpringBootTest
@@ -27,11 +26,11 @@ class ClientControllerTest {
     private ClientRepository clientRepository;
 
     @Test
-    void shouldSaveClient() throws Exception {
-        ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO(null, "Luiz", "luiz12@luiz.com", "123222");
+    void shouldNotSaveClientDueToUnavailableEmailServer() throws Throwable {
+        ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO(null, "4845", "abc@abc.bas", "123222");
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/ufitness/client")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(clientRegistryDTO)));
-        resultActions.andExpect(MockMvcResultMatchers.status().isCreated());
+        resultActions.andExpect(MockMvcResultMatchers.status().is5xxServerError());
     }
 }

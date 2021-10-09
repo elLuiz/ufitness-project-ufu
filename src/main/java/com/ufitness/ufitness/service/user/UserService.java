@@ -1,5 +1,6 @@
 package com.ufitness.ufitness.service.user;
 
+import com.ufitness.ufitness.exception.LoginException;
 import com.ufitness.ufitness.exception.UserNotFoundException;
 import com.ufitness.ufitness.repository.user.UserEntity;
 import com.ufitness.ufitness.repository.user.UserRepository;
@@ -25,5 +26,7 @@ public class UserService {
         Optional<UserEntity> userEntity = userRepository.loginUser(loginDTO.getEmail());
         if (userEntity.isEmpty() || !passwordEncoder.matches(loginDTO.getPassword(), userEntity.get().getPassword()))
             throw new UserNotFoundException("USER_NOT_FOUND");
+        else if (!userEntity.get().isEnabled())
+            throw new LoginException("USER_NOT_ENABLED");
     }
 }
