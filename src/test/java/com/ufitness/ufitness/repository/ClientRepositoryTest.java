@@ -4,7 +4,6 @@ import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.client.ClientRepository;
 import com.ufitness.ufitness.repository.user.UserEntity;
 import org.assertj.core.api.AssertionsForClassTypes;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -13,11 +12,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 class ClientRepositoryTest {
     @Autowired
     private ClientRepository clientRepository;
-
-    @AfterEach
-    void tearDown() {
-        clientRepository.deleteAll();
-    }
 
     @Test
     void shouldSaveClientWithUniqueId() {
