@@ -56,6 +56,7 @@ class LoginControllerTest {
         userEntity.setEmail(email);
         userEntity.setPassword("$2a$12$86WGlji3dJOPek8PKd3EpeajuPAL4Zfg7BDsXO0EuHM7YMrjOc5ES");
         userEntity.setUserTypeEnum(UserTypeEnum.CLIENT);
+        userEntity.setEnabled(true);
         userEntity.setClientEntity(new ClientEntity(null, userEntity));
         userRepository.save(userEntity);
     }

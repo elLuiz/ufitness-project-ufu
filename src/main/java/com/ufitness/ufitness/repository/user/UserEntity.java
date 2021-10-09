@@ -16,7 +16,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserEntity {
     @Id
-    @Column(name = "client_id")
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
     private String name;
@@ -28,9 +29,7 @@ public class UserEntity {
     private boolean enabled;
     @Column
     private UserTypeEnum userTypeEnum;
-    @OneToOne(cascade = CascadeType.ALL)
-    @MapsId
-    @JoinColumn(name = "client_id")
+    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL)
     private ClientEntity clientEntity;
 
     public void insertClientDetails(ClientEntity clientEntity) {

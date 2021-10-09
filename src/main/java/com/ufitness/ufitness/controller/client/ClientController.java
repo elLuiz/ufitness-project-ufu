@@ -1,5 +1,6 @@
 package com.ufitness.ufitness.controller.client;
 
+import com.ufitness.ufitness.exception.EmailNotSendException;
 import com.ufitness.ufitness.service.client.ClientDTO;
 import com.ufitness.ufitness.service.client.ClientRegistryDTO;
 import com.ufitness.ufitness.service.client.ClientService;
@@ -21,6 +22,10 @@ public class ClientController {
 
     @PostMapping
     public ResponseEntity<ClientDTO> saveClient(@RequestBody ClientRegistryDTO clientRegistryDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.saveClient(clientRegistryDTO));
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(clientService.saveClient(clientRegistryDTO));
+        } catch (EmailNotSendException emailNotSendException) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

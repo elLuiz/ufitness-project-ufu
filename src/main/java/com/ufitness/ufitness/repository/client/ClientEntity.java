@@ -19,7 +19,7 @@ public class ClientEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-    @OneToOne(mappedBy = "clientEntity", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private UserEntity userEntity;
 }
