@@ -21,6 +21,6 @@ class ClientRepositoryTest {
         userEntity.setEmail("test@spring.boot");
         userEntity.setPassword("1232432");
         userEntity.setClientEntity(clientEntity);
-        AssertionsForClassTypes.assertThat(clientRepository.save(clientEntity).getId()).isEqualTo(1L);
+        AssertionsForClassTypes.assertThat(clientRepository.save(clientEntity).getId()).isNotNull();
     }
 }
