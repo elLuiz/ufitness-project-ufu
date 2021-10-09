@@ -27,11 +27,6 @@ class LoginControllerTest {
     @Autowired
     private UserRepository userRepository;
 
-    @AfterEach
-    void tearDown() {
-        userRepository.deleteAll();
-    }
-
     @Test
     void shouldLogin() throws Exception {
         saveUser("luiz@luiz.com");
