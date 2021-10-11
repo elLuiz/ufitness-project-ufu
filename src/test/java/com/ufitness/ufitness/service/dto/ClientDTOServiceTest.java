@@ -1,9 +1,7 @@
 package com.ufitness.ufitness.service.dto;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
-import com.ufitness.ufitness.repository.user.UserEntity;
-import com.ufitness.ufitness.repository.user.UserTypeEnum;
-import com.ufitness.ufitness.service.client.ClientDTO;
+import com.ufitness.ufitness.dto.ClientDTO;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

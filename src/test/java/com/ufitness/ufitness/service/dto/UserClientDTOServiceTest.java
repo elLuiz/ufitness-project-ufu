@@ -2,7 +2,7 @@ package com.ufitness.ufitness.service.dto;
 
 import com.ufitness.ufitness.repository.user.UserEntity;
 import com.ufitness.ufitness.repository.user.UserTypeEnum;
-import com.ufitness.ufitness.service.client.ClientRegistryDTO;
+import com.ufitness.ufitness.dto.ClientRegistryDTO;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ class UserClientDTOServiceTest {
 
     @Test
     void shouldConvertToEntity() {
-        ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO(null, "test", "test", "1234");
+        ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO("test", "test", "1234");
         AssertionsForClassTypes.assertThat(userClientDTOService.convertToEntity(clientRegistryDTO).getName()).isEqualTo("test");
     }
 

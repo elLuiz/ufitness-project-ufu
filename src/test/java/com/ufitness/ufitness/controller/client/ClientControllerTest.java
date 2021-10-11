@@ -2,7 +2,7 @@ package com.ufitness.ufitness.controller.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ufitness.ufitness.repository.client.ClientRepository;
-import com.ufitness.ufitness.service.client.ClientRegistryDTO;
+import com.ufitness.ufitness.dto.ClientRegistryDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,7 +27,7 @@ class ClientControllerTest {
 
     @Test
     void shouldNotSaveClientDueToUnavailableEmailServer() throws Throwable {
-        ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO(null, "4845", "abc@abc.bas", "123222");
+        ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO("Luiz Test", "abc@abc.com", "123233322");
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/ufitness/client")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(clientRegistryDTO)));

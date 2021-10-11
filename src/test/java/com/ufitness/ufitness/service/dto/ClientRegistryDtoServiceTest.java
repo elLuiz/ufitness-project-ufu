@@ -2,7 +2,7 @@ package com.ufitness.ufitness.service.dto;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.user.UserEntity;
-import com.ufitness.ufitness.service.client.ClientRegistryDTO;
+import com.ufitness.ufitness.dto.ClientRegistryDTO;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,7 +47,6 @@ class ClientRegistryDtoServiceTest {
 
     private ClientRegistryDTO generateClientRegistryDTO() {
         ClientRegistryDTO clientRegistryDTO = new ClientRegistryDTO();
-        clientRegistryDTO.setId(40L);
         clientRegistryDTO.setEmail("myemail@gmail.com");
         clientRegistryDTO.setName("My Name");
         clientRegistryDTO.setPassword("12333");
