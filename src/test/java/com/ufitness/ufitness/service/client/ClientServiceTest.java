@@ -1,6 +1,8 @@
 package com.ufitness.ufitness.service.client;
 
 
+import com.ufitness.ufitness.dto.ClientDTO;
+import com.ufitness.ufitness.dto.ClientRegistryDTO;
 import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.client.ClientRepository;
 import com.ufitness.ufitness.service.dto.ClientDTOService;

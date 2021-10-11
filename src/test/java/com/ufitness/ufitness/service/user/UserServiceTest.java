@@ -1,5 +1,6 @@
 package com.ufitness.ufitness.service.user;
 
+import com.ufitness.ufitness.dto.LoginDTO;
 import com.ufitness.ufitness.exception.LoginException;
 import com.ufitness.ufitness.exception.UserNotFoundException;
 import com.ufitness.ufitness.repository.user.UserEntity;

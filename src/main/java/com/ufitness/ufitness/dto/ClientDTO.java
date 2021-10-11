@@ -1,4 +1,4 @@
-package com.ufitness.ufitness.service.user;
+package com.ufitness.ufitness.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginDTO {
+public class ClientDTO {
+    private Long id;
+    private String name;
     private String email;
-    private String password;
 }
