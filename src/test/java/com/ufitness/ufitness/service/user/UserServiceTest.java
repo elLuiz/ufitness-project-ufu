@@ -57,7 +57,7 @@ class UserServiceTest {
         try {
             userServiceSpy.loginUser(invalidLogin);
         } catch (UserNotFoundException userNotFoundException) {
-            AssertionsForClassTypes.assertThat("USER_NOT_FOUND").isEqualTo(userNotFoundException.getMessage());
+            AssertionsForClassTypes.assertThat(userNotFoundException.getMessage()).isNotEmpty();
         }
     }
 
@@ -71,7 +71,7 @@ class UserServiceTest {
         try {
             userServiceSpy.loginUser(loginDTO);
         } catch (LoginException loginException) {
-            AssertionsForClassTypes.assertThat(loginException.getMessage()).isEqualTo("USER_NOT_ENABLED");
+            AssertionsForClassTypes.assertThat(loginException.getMessage()).isNotEmpty();
         }
     }
 }

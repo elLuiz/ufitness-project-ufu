@@ -29,7 +29,7 @@ class LoginControllerTest {
     @Test
     void shouldLogin() throws Exception {
         saveUser("luiz@luiz.com");
-        LoginDTO loginDTO = new LoginDTO("luiz@luiz.com", "abc");
+        LoginDTO loginDTO = new LoginDTO("luiz@luiz.com", "abc2223232323232");
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/ufitness/login/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginDTO)));
@@ -39,7 +39,7 @@ class LoginControllerTest {
     @Test
     void shouldNotLoginWhenUserDoesNotExist() throws Exception {
         saveUser("luiz@123.spring");
-        LoginDTO loginDTO = new LoginDTO("luiz12@luiz.com", "bac");
+        LoginDTO loginDTO = new LoginDTO("luiz12@luiz.com", "33223232323232");
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/ufitness/login/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginDTO)));
@@ -49,7 +49,7 @@ class LoginControllerTest {
     private void saveUser(String email) {
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(email);
-        userEntity.setPassword("$2a$12$86WGlji3dJOPek8PKd3EpeajuPAL4Zfg7BDsXO0EuHM7YMrjOc5ES");
+        userEntity.setPassword("$2a$12$slyk9iAOhqhWIpAeWR7m1OChyIDmp18BXPY3Jb8NruFYL8IpFPH4q");
         userEntity.setUserTypeEnum(UserTypeEnum.CLIENT);
         userEntity.setEnabled(true);
         userEntity.setClientEntity(new ClientEntity(null, userEntity));
