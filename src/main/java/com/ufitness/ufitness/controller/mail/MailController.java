@@ -1,6 +1,5 @@
 package com.ufitness.ufitness.controller.mail;
 
-import com.ufitness.ufitness.exception.InvalidTokenException;
 import com.ufitness.ufitness.service.mail.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,11 +24,7 @@ public class MailController {
 
     @PatchMapping("/confirm")
     public ResponseEntity<Map<String, String>> validateMailToken(@RequestParam("token") String token) {
-        try {
-            mailService.validateMailToken(token);
-            return ResponseEntity.status(HttpStatus.OK).body(Collections.singletonMap("action", "SUCCESS"));
-        } catch (InvalidTokenException invalidTokenException) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", invalidTokenException.getMessage()));
-        }
+        mailService.validateMailToken(token);
+        return ResponseEntity.status(HttpStatus.OK).body(Collections.singletonMap("action", "SUCCESS"));
     }
 }

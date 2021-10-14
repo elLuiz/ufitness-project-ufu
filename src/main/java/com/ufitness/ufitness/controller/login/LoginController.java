@@ -1,11 +1,8 @@
 package com.ufitness.ufitness.controller.login;
 
-import com.ufitness.ufitness.exception.LoginException;
-import com.ufitness.ufitness.exception.UserNotFoundException;
 import com.ufitness.ufitness.dto.LoginDTO;
 import com.ufitness.ufitness.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,13 +25,7 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<Map<String, String>> loginUser(@Valid @RequestBody LoginDTO loginDTO) {
-        try {
-            userService.loginUser(loginDTO);
-            return ResponseEntity.ok(Collections.singletonMap("result", "success"));
-        } catch (UserNotFoundException userNotFoundException) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", userNotFoundException.getMessage()));
-        } catch (LoginException loginException) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", loginException.getMessage()));
-        }
+        userService.loginUser(loginDTO);
+        return ResponseEntity.ok(Collections.singletonMap("result", "success"));
     }
 }
