@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11.8-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=ufitness-db
+      - POSTGRES_USER=ufitness_user
+      - POSTGRES_PASSWORD=ufitness_user_ps
+      - MAX_CONNECTIONS=10
