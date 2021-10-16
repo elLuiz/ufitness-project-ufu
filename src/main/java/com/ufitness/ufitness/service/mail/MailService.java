@@ -22,6 +22,8 @@ import java.util.Optional;
 public class MailService {
     @Value("${spring.mail.username}")
     private String emailSender;
+    @Value("confirmation.address")
+    private String linkAddress;
     private final MailRepository mailRepository;
     private final JavaMailSender javaMailSender;
 
@@ -35,7 +37,7 @@ public class MailService {
     public void sendConfirmationEmail(UserEntity userEntity) throws EmailNotSendException {
         MailEntity emailEntity = createEmailEntity(userEntity);
         String message = "Seja bem-vindo ao UFitness, " + userEntity.getName() + ".\n " +
-                "Para confirmar seu cadastro, por favor clique no link: http://localhost:8080/api/v1/ufitness/mail/confirm?token=" + emailEntity.getToken().toString();
+                "Para confirmar seu cadastro, por favor clique no link: "+ linkAddress + "api/v1/ufitness/mail/confirm?token=" + emailEntity.getToken();
         emailEntity.setMessage(message);
         sendSimpleEmail(userEntity, emailEntity, message);
     }
