@@ -37,7 +37,7 @@ public class MailService {
     public void sendConfirmationEmail(UserEntity userEntity) throws EmailNotSendException {
         MailEntity emailEntity = createEmailEntity(userEntity);
         String message = "Seja bem-vindo ao UFitness, " + userEntity.getName() + ".\n " +
-                "Para confirmar seu cadastro, por favor clique no link: "+ linkAddress + "api/v1/ufitness/mail/confirm?token=" + emailEntity.getToken();
+                "Para confirmar seu cadastro, por favor clique no link:  https://ufitness-proj-api.herokuapp.com/api/v1/ufitness/mail/confirm?token=" + emailEntity.getToken();
         emailEntity.setMessage(message);
         sendSimpleEmail(userEntity, emailEntity, message);
     }
