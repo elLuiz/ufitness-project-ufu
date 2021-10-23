@@ -1,6 +1,7 @@
 package com.ufitness.ufitness.repository.user;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
+import com.ufitness.ufitness.repository.instructor.InstructorEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,9 +32,22 @@ public class UserEntity {
     private UserTypeEnum userTypeEnum;
     @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL)
     private ClientEntity clientEntity;
+    @OneToOne(mappedBy = "userEntity")
+    private InstructorEntity instructorEntity;
+
+    public UserEntity(Long id, String name, String email, String password, boolean enabled, UserTypeEnum userTypeEnum, ClientEntity clientEntity) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+        this.userTypeEnum = userTypeEnum;
+        this.clientEntity = clientEntity;
+    }
 
     public void insertClientDetails(ClientEntity clientEntity) {
         this.setClientEntity(clientEntity);
         this.setUserTypeEnum(UserTypeEnum.CLIENT);
     }
+
 }

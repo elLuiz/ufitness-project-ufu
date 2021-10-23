@@ -1,7 +1,7 @@
 package com.ufitness.ufitness.controller.client;
 
-import com.ufitness.ufitness.dto.ClientDTO;
-import com.ufitness.ufitness.dto.ClientRegistryDTO;
+import com.ufitness.ufitness.dto.client.ClientDTO;
+import com.ufitness.ufitness.dto.client.ClientRegistryDTO;
 import com.ufitness.ufitness.service.client.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

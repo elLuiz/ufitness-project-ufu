@@ -1,4 +1,4 @@
-package com.ufitness.ufitness.dto;
+package com.ufitness.ufitness.dto.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
