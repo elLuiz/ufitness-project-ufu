@@ -2,7 +2,7 @@ package com.ufitness.ufitness.controller.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ufitness.ufitness.repository.client.ClientRepository;
-import com.ufitness.ufitness.dto.ClientRegistryDTO;
+import com.ufitness.ufitness.dto.client.ClientRegistryDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

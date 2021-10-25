@@ -38,7 +38,8 @@ class MailControllerTest {
     void init() {
         token = SecureTokenGenerator.generateSecureToken();
         String randomEmail = SecureTokenGenerator.generateSecureToken() + "@email.com";
-        UserEntity userEntity = new UserEntity(null, "ABC", randomEmail, "123", false, UserTypeEnum.CLIENT, null);
+        UserEntity userEntity =
+                new UserEntity(null, "ABC", randomEmail, "123", false, UserTypeEnum.CLIENT, null);
         userEntity = userRepository.save(userEntity);
         MailEntity mailEntity = new MailEntity(null, EmailStatus.SENT, "Messa", userEntity, token, LocalDateTime.now(), LocalDateTime.now().plusHours(1L));
         mailRepository.save(mailEntity);

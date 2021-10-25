@@ -1,13 +1,13 @@
 package com.ufitness.ufitness.service.client;
 
 
-import com.ufitness.ufitness.dto.ClientDTO;
-import com.ufitness.ufitness.dto.ClientRegistryDTO;
+import com.ufitness.ufitness.dto.client.ClientDTO;
+import com.ufitness.ufitness.dto.client.ClientRegistryDTO;
 import com.ufitness.ufitness.repository.client.ClientEntity;
 import com.ufitness.ufitness.repository.client.ClientRepository;
-import com.ufitness.ufitness.service.dto.ClientDTOService;
-import com.ufitness.ufitness.service.dto.ClientRegistryDTOService;
-import com.ufitness.ufitness.service.dto.UserClientDTOService;
+import com.ufitness.ufitness.service.dto.client.ClientDTOService;
+import com.ufitness.ufitness.service.dto.client.ClientRegistryDTOService;
+import com.ufitness.ufitness.service.dto.client.UserClientDTOService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

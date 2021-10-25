@@ -1,7 +1,8 @@
-package com.ufitness.ufitness.service.dto;
+package com.ufitness.ufitness.service.dto.client;
 
 import com.ufitness.ufitness.repository.client.ClientEntity;
-import com.ufitness.ufitness.dto.ClientDTO;
+import com.ufitness.ufitness.dto.client.ClientDTO;
+import com.ufitness.ufitness.service.dto.DTOService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
